@@ -42,4 +42,15 @@ interface output {
     average: number 
 }
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+let hourEachDay: number[] =[];
+for(let i = 3 ; i<process.argv.length ; i++){
+    if(!isNaN(i)){
+        hourEachDay.push(Number(process.argv[i]))
+    }else {
+        throw "please enter only numbers"
+    }
+}
+
+const target: number = Number(process.argv[Number(process.argv[2])])
+
+console.log(calculateExercises(hourEachDay, target));

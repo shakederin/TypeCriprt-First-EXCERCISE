@@ -6,7 +6,11 @@ function calculateBmi(height: number, weight: number): string{
         case (bmi>16 && bmi<25):
             return "Normal range";
         case (bmi>=25):
-            return "Underweight"        
+            return "Underweight";
+        default:
+            return "please enter numbers"        
     }
 }
-console.log(calculateBmi(187, 71))
+const height: number = Number(process.argv[2])
+const weight: number = Number(process.argv[3])
+console.log(calculateBmi(height, weight))
