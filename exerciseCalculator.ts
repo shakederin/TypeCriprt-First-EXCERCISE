@@ -1,22 +1,22 @@
-function calculateExercises(hourEachDay: number[], target:number):output {
-    let trainingDays: number = 0;
-    let totalHours: number = 0;
+export function calculateExercises(hourEachDay: number[], target:number):output {
+    let trainingDays = 0;
+    let totalHours = 0;
     let numberRating: 1|2|3 ;
     let textRating: string ;
-    for( let day of hourEachDay){
+    for(const day of hourEachDay){
         if(day!==0){
-            trainingDays++
+            trainingDays++;
         }
-        totalHours+=day
+        totalHours+=day;
     }
-    let average: number = totalHours/hourEachDay.length;
+    const average: number = totalHours/hourEachDay.length;
     if(average>=target*1.2){
         numberRating =3;
-        textRating = "Great Week! Well done."
+        textRating = "Great Week! Well done.";
     }
     if(average<target*1.2 && average>target*0.8){   
         numberRating = 2;
-        textRating = "Not Too Bad But Could Be Better"
+        textRating = "Not Too Bad But Could Be Better";
     }else{
         numberRating =1;
         textRating = "You Need To Get Yourself Together... NOW!"
@@ -29,10 +29,10 @@ function calculateExercises(hourEachDay: number[], target:number):output {
         ratingDescription: textRating,
         target: target,
         average: average
-    }
+    };
 }   
 
-interface output {
+export interface output {
     periodLength: number,
     trainingDays: number,
     success: boolean,
@@ -42,15 +42,15 @@ interface output {
     average: number 
 }
 
-let hourEachDay: number[] =[];
+const hourEachDay: number[] =[];
 for(let i = 3 ; i<process.argv.length ; i++){
     if(!isNaN(i)){
-        hourEachDay.push(Number(process.argv[i]))
+        hourEachDay.push(Number(process.argv[i]));
     }else {
-        throw "please enter only numbers"
+        throw "please enter only numbers";
     }
 }
 
-const target: number = Number(process.argv[Number(process.argv[2])])
+// const target = Number(process.argv[Number(process.argv[2])]);
 
-console.log(calculateExercises(hourEachDay, target));
+// console.log(calculateExercises(hourEachDay, target));
